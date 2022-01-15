@@ -7,11 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.dictionaryapp.R
+import com.example.dictionaryapp.databinding.FragmentListBinding
+import com.example.dictionaryapp.databinding.FragmentSearchBinding
 import com.example.dictionaryapp.viewmodel.DictionaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
+
     private val viewModel: DictionaryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
