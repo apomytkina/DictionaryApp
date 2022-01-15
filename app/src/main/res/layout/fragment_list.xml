@@ -4,35 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.listFragment.ListFragment">
+    tools:context=".ui.ListFragment">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/list_header"
+    <TextView
+        android:id="@+id/learning_words_tv"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height"
-        android:orientation="vertical"
-        android:name="com.example.dictionaryapp.ui.listFragment.ListHeaderFragment"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Count of words for learning: 0"
+        android:textSize="@dimen/header_text_size"
         app:layout_constraintBottom_toTopOf="@+id/header_gl"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/header_gl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/guideline_height"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"/>
+        app:layout_constraintGuide_percent="0.05"/>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/list_body"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_rv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
-        android:orientation="vertical"
-        android:name="com.example.dictionaryapp.ui.listFragment.ListBodyFragment"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_gl"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/header_gl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.searchFragment.SearchFragment">
+    tools:context=".ui.SearchFragment">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/search_header"
+    <EditText
+        android:id="@+id/search_word_et"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height"
-        android:orientation="vertical"
-        android:name="com.example.dictionaryapp.ui.searchFragment.SearchHeaderFragment"
+        android:layout_height="wrap_content"
+        android:hint="Search a word"
         app:layout_constraintBottom_toTopOf="@+id/header_gl"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/header_gl"
@@ -24,15 +24,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1"/>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/search_body"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_rv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height"
-        android:orientation="vertical"
-        android:name="com.example.dictionaryapp.ui.searchFragment.SearchBodyFragment"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_gl"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/header_gl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

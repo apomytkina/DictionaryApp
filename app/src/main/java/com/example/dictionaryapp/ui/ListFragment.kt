@@ -1,4 +1,4 @@
-package com.example.dictionaryapp.ui.doneFragment
+package com.example.dictionaryapp.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,7 @@ import com.example.dictionaryapp.viewmodel.DictionaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DoneFragment : Fragment() {
+class ListFragment : Fragment() {
     private val viewModel: DictionaryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +23,6 @@ class DoneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_done, container, false)
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
 }
