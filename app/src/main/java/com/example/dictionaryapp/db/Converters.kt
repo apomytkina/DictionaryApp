@@ -1,6 +1,7 @@
 package com.example.dictionaryapp.db
 
 import androidx.room.TypeConverter
+import com.example.dictionaryapp.model.Def
 import com.example.dictionaryapp.model.Ex
 import com.example.dictionaryapp.model.Tr
 import com.google.gson.Gson

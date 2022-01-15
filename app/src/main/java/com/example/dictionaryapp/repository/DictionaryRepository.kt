@@ -3,6 +3,7 @@ package com.example.dictionaryapp.repository
 import com.example.dictionaryapp.api.DictionaryApi
 import com.example.dictionaryapp.db.DictionaryDao
 import com.example.dictionaryapp.model.Def
+import com.example.dictionaryapp.model.Translation
 import javax.inject.Inject
 
 class DictionaryRepository @Inject constructor(
@@ -13,7 +14,7 @@ class DictionaryRepository @Inject constructor(
 
     suspend fun upsert(def: Def) = dictionaryDao.upsert(def)
 
-    fun getAllDefs() = dictionaryDao.getAllDefs()
+    fun getAllTranslations() = dictionaryDao.getAllTranslations()
 
-    suspend fun deleteDef(def: Def) = dictionaryDao.deleteDef(def)
+    suspend fun deleteTranslation(def: Def) = dictionaryDao.deleteTranslation(def)
 }
