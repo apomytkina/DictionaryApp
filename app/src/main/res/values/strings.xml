@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DictionaryApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="card_title">time - время</string>
+    <string name="word_title">time</string>
+    <string name="word_translation">время</string>
+    <string name="word_usage">You can visit me at any time.</string>
+</resources>
