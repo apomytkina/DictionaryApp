@@ -6,14 +6,20 @@ import com.example.dictionaryapp.adapters.differCallback
 import com.example.dictionaryapp.databinding.ListWordCardBinding
 import com.example.dictionaryapp.model.Def
 
-class ListDefAdapter : androidx.recyclerview.widget.ListAdapter<Def, ListDefViewHolder>(differCallback) {
+class ListDefAdapter(private var listener: OnItemClickListener)
+    : androidx.recyclerview.widget.ListAdapter<Def, ListDefViewHolder>(differCallback) {
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListDefViewHolder {
         return ListDefViewHolder(
             ListWordCardBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            listener
         )
     }
 

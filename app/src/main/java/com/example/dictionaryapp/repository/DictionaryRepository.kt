@@ -10,7 +10,7 @@ class DictionaryRepository @Inject constructor(
     private val dictionaryDao: DictionaryDao,
     private val dictionaryApi: DictionaryApi
 ) {
-    suspend fun getTranslation() = dictionaryApi.getTranslation()
+    suspend fun getTranslation(text: String) = dictionaryApi.getTranslation(text=text)
 
     suspend fun upsert(def: Def) = dictionaryDao.upsert(def)
 
