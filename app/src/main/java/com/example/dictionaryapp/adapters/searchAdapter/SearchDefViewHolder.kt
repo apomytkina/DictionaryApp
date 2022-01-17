@@ -6,7 +6,8 @@ import com.example.dictionaryapp.model.Def
 
 class SearchDefViewHolder(
     private val binding: SearchWordCardBinding,
-    listener: SearchDefAdapter.OnItemClickListener
+    addListener: SearchDefAdapter.OnItemClickListener,
+    infoListener: SearchDefAdapter.OnItemClickListener
 ): RecyclerView.ViewHolder(binding.root) {
     fun bind(data: Def) {
         with (binding) {
@@ -16,15 +17,11 @@ class SearchDefViewHolder(
 
     init {
         binding.addSearchCard.setOnClickListener {
-            listener.onItemClick(adapterPosition)
-        }
-
-        binding.searchCardTv.setOnClickListener {
-            listener.onItemClick(adapterPosition)
+            addListener.onItemClick(adapterPosition)
         }
 
         binding.infoSearchCard.setOnClickListener {
-            listener.onItemClick(adapterPosition)
+            infoListener.onItemClick(adapterPosition)
         }
     }
 }

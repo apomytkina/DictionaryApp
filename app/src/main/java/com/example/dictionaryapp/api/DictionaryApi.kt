@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface DictionaryApi {
-    @GET("/lookup")
+    @GET("lookup")
     suspend fun getTranslation(
         @Query("key")
         key: String = API_KEY,

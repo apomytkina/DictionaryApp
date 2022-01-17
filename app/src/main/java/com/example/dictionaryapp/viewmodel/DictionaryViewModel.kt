@@ -38,4 +38,6 @@ class DictionaryViewModel @Inject constructor(
     fun deleteWord(translation: Translation) = viewModelScope.launch {
         repository.deleteTranslation(translation.def[0])
     }
+
+    //fun getSize() = repository.getTranslationsSize()
 }

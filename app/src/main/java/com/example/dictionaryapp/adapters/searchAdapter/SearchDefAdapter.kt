@@ -7,7 +7,10 @@ import com.example.dictionaryapp.adapters.differCallback
 import com.example.dictionaryapp.databinding.SearchWordCardBinding
 import com.example.dictionaryapp.model.Def
 
-class SearchDefAdapter(private var listener: OnItemClickListener):
+class SearchDefAdapter(
+    private var infoListener: OnItemClickListener,
+    private var addListener: OnItemClickListener
+):
     ListAdapter<Def, SearchDefViewHolder>(differCallback) {
     interface OnItemClickListener {
         fun onItemClick(position: Int)
@@ -20,7 +23,8 @@ class SearchDefAdapter(private var listener: OnItemClickListener):
                 parent,
                 false
             ),
-            listener
+            addListener,
+            infoListener
         )
     }
 
