@@ -1,10 +1,12 @@
 package com.example.dictionaryapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -13,9 +15,12 @@ import com.example.dictionaryapp.R
 import com.example.dictionaryapp.adapters.searchAdapter.SearchDefAdapter
 import com.example.dictionaryapp.databinding.FragmentSearchBinding
 import com.example.dictionaryapp.model.Def
+import com.example.dictionaryapp.model.Ex
+import com.example.dictionaryapp.model.Tr
 import com.example.dictionaryapp.util.Constants.Companion.INFO_BUNDLE_ID
 import com.example.dictionaryapp.util.Constants.Companion.SEARCH_WORD_TIME_DELAY
 import com.example.dictionaryapp.viewmodel.DictionaryViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -60,7 +65,11 @@ class SearchFragment : Fragment() {
             },
             object : SearchDefAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-
+                    word = translationsList[position][0]
+                    translation = translationsList[position][1]
+                    example = translationsList[position][2]
+                    viewModel.saveWord(Def(null, "", word, listOf(Tr(listOf(Ex(example)), translation)), ""))
+                    Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
                 }
             }
         )

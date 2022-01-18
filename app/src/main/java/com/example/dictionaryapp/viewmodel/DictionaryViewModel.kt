@@ -29,14 +29,14 @@ class DictionaryViewModel @Inject constructor(
         }
     }
 
-    fun saveWord(translation: Translation) = viewModelScope.launch {
-        repository.upsert(translation.def[0])
+    fun saveWord(def: Def) = viewModelScope.launch {
+        repository.upsert(def)
     }
 
     fun getAllWords() = repository.getAllTranslations()
 
-    fun deleteWord(translation: Translation) = viewModelScope.launch {
-        repository.deleteTranslation(translation.def[0])
+    fun deleteWord(def: Def) = viewModelScope.launch {
+        repository.deleteTranslation(def)
     }
 
     //fun getSize() = repository.getTranslationsSize()
