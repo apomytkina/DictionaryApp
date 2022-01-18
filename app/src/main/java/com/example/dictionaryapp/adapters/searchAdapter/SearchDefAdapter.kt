@@ -13,7 +13,7 @@ class SearchDefAdapter(
 ):
     ListAdapter<Def, SearchDefViewHolder>(differCallback) {
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(def: Def)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchDefViewHolder {

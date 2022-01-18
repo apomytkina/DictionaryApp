@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.translationMatrix
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -29,12 +30,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
-    private var word: String = "Word is not found"
-    private var translation: String = "Translation is not found"
-    private var example: String = "Example is not found"
-
-    lateinit var translationsList: List<Array<String>>
-
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
@@ -50,25 +45,20 @@ class SearchFragment : Fragment() {
 
         searchDefAdapter = SearchDefAdapter(
             object : SearchDefAdapter.OnItemClickListener {
-                override fun onItemClick(position: Int) {
-                    if (!translationsList.isNullOrEmpty()){
-                        val bundle = Bundle()
-                        bundle.putStringArray(INFO_BUNDLE_ID, translationsList[position])
-                        val wordFragment = WordFragment()
-                        wordFragment.arguments = bundle
-                        parentFragmentManager.beginTransaction().apply {
-                            replace(R.id.searchFragment, wordFragment)
-                            commit()
-                        }
+                override fun onItemClick(def: Def) {
+                    val bundle = Bundle()
+                    bundle.putStringArray(INFO_BUNDLE_ID, parseDefToArray(def))
+                    val wordFragment = WordFragment()
+                    wordFragment.arguments = bundle
+                    parentFragmentManager.beginTransaction().apply {
+                        replace(R.id.searchFragment, wordFragment)
+                        commit()
                     }
                 }
             },
             object : SearchDefAdapter.OnItemClickListener {
-                override fun onItemClick(position: Int) {
-                    word = translationsList[position][0]
-                    translation = translationsList[position][1]
-                    example = translationsList[position][2]
-                    viewModel.saveWord(Def(null, "", word, listOf(Tr(listOf(Ex(example)), translation)), ""))
+                override fun onItemClick(def: Def) {
+                    viewModel.saveWord(def)
                     Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -91,19 +81,6 @@ class SearchFragment : Fragment() {
         viewModel.def.observe(viewLifecycleOwner, Observer { response ->
             binding.apply {
                 searchDefAdapter.submitList(response)
-
-                translationsList = mutableListOf()
-                response.forEach {
-                    word = it.text
-                    if (!it.tr.isNullOrEmpty())
-                        translation = it.tr[0].text
-                    else
-                        translation = "Translation is not found"
-                    if (!it.tr[0].ex.isNullOrEmpty())
-                        example = it.tr[0].ex[0].text
-                    else example = "Example is not found"
-                    (translationsList as MutableList<Array<String>>).add(arrayOf(word, translation, example))
-                }
             }
         })
         return view
@@ -119,5 +96,16 @@ class SearchFragment : Fragment() {
             adapter = searchAdapter
             layoutManager = LinearLayoutManager(activity)
         }
+    }
+
+    fun parseDefToArray(def: Def): Array<String>{
+        var translation = "Translation is not found"
+        var example = "Example is not found"
+        var word = def.text
+        if (!def.tr.isNullOrEmpty())
+            translation = def.tr[0].text
+        if (!def.tr[0].ex.isNullOrEmpty())
+            example = def.tr[0].ex[0].text
+        return arrayOf(word, translation, example)
     }
 }
