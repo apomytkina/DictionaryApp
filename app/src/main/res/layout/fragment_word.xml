@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.WordFragment">
 
     <TextView
@@ -19,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/translation_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_title_start_margin"
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/word_title_tv" />
 
     <TextView
+        android:id="@+id/example_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_title_start_margin"
@@ -37,6 +39,6 @@
         android:text="@string/word_usage"
         android:textSize="@dimen/word_text_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/translation_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

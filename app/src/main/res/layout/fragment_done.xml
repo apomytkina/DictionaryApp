@@ -13,17 +13,10 @@
         android:gravity="center"
         android:text="Count of learnt words: 0"
         android:textSize="@dimen/header_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/header_gl"
+        app:layout_constraintBottom_toTopOf="@+id/done_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/header_gl"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/guideline_height"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/done_rv"
@@ -33,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_gl"
+        app:layout_constraintTop_toBottomOf="@+id/learnt_words_tv"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

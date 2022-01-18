@@ -1,7 +1,6 @@
 package com.example.dictionaryapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dictionaryapp.R
 import com.example.dictionaryapp.adapters.searchAdapter.SearchDefAdapter
 import com.example.dictionaryapp.databinding.FragmentSearchBinding
+import com.example.dictionaryapp.model.Def
+import com.example.dictionaryapp.util.Constants.Companion.INFO_BUNDLE_ID
 import com.example.dictionaryapp.util.Constants.Companion.SEARCH_WORD_TIME_DELAY
 import com.example.dictionaryapp.viewmodel.DictionaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +24,12 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
+    private var word: String = "Word is not found"
+    private var translation: String = "Translation is not found"
+    private var example: String = "Example is not found"
+
+    lateinit var translationsList: List<Array<String>>
+
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
@@ -39,17 +46,21 @@ class SearchFragment : Fragment() {
         searchDefAdapter = SearchDefAdapter(
             object : SearchDefAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    Log.d("tag", "Item Added!")
-                    //viewModel.saveWord(position)
+                    if (!translationsList.isNullOrEmpty()){
+                        val bundle = Bundle()
+                        bundle.putStringArray(INFO_BUNDLE_ID, translationsList[position])
+                        val wordFragment = WordFragment()
+                        wordFragment.arguments = bundle
+                        parentFragmentManager.beginTransaction().apply {
+                            replace(R.id.searchFragment, wordFragment)
+                            commit()
+                        }
+                    }
                 }
             },
             object : SearchDefAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val wordFragment = WordFragment()
-                    fragmentManager?.beginTransaction()?.replace(
-                        R.id.nav_host_fragment_container,
-                        wordFragment
-                    )?.commit()
+
                 }
             }
         )
@@ -71,9 +82,21 @@ class SearchFragment : Fragment() {
         viewModel.def.observe(viewLifecycleOwner, Observer { response ->
             binding.apply {
                 searchDefAdapter.submitList(response)
+
+                translationsList = mutableListOf()
+                response.forEach {
+                    word = it.text
+                    if (!it.tr.isNullOrEmpty())
+                        translation = it.tr[0].text
+                    else
+                        translation = "Translation is not found"
+                    if (!it.tr[0].ex.isNullOrEmpty())
+                        example = it.tr[0].ex[0].text
+                    else example = "Example is not found"
+                    (translationsList as MutableList<Array<String>>).add(arrayOf(word, translation, example))
+                }
             }
         })
-
         return view
     }
 

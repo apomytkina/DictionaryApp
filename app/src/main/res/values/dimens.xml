@@ -10,4 +10,5 @@
     <dimen name="word_title_text_size">36sp</dimen>
     <dimen name="word_text_size">24sp</dimen>
     <dimen name="icon_height_width">50dp</dimen>
+    <dimen name="start_margin_rv">5dp</dimen>
 </resources>

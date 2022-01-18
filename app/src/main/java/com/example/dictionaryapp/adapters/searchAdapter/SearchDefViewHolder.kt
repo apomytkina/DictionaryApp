@@ -18,6 +18,7 @@ class SearchDefViewHolder(
     init {
         binding.addSearchCard.setOnClickListener {
             addListener.onItemClick(adapterPosition)
+
         }
 
         binding.infoSearchCard.setOnClickListener {

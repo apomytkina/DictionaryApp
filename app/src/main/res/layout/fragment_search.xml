@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/searchFragment"
     tools:context=".ui.SearchFragment">
 
     <EditText
@@ -11,18 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Search a word"
-        app:layout_constraintBottom_toTopOf="@+id/header_gl"
+        app:layout_constraintBottom_toTopOf="@+id/search_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/header_gl"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/guideline_height"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_rv"
@@ -31,6 +25,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_gl" />
+        app:layout_constraintTop_toBottomOf="@+id/search_word_et" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

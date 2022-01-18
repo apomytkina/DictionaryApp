@@ -8,7 +8,7 @@
         android:id="@+id/done_card_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/card_title_start_margin"
+        android:layout_marginStart="@dimen/start_margin_rv"
         android:text="@string/card_title"
         android:textSize="@dimen/card_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
