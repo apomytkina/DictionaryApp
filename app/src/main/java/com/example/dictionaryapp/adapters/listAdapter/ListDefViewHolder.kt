@@ -6,21 +6,30 @@ import com.example.dictionaryapp.model.Def
 
 class ListDefViewHolder(
     private val binding: ListWordCardBinding,
-    listener: ListDefAdapter.OnItemClickListener
+    infoListener: ListDefAdapter.OnItemClickListener,
+    deleteListener: ListDefAdapter.OnItemClickListener,
+    addNotificationListener: ListDefAdapter.OnItemClickListener
 ): RecyclerView.ViewHolder(binding.root) {
+    private lateinit var def: Def
+
     fun bind(data: Def) {
         with (binding) {
             listCardTv.text = "${data.text} - ${data.tr[0].text}"
+            def = data
         }
     }
 
     init {
-        binding.addNotificationListCard.setOnClickListener {
-            listener.onItemClick(adapterPosition)
+        binding.infoListCard.setOnClickListener {
+            infoListener.onItemClick(def)
         }
 
         binding.deleteListCard.setOnClickListener {
-            listener.onItemClick(adapterPosition)
+            deleteListener.onItemClick(def)
+        }
+
+        binding.addNotificationListCard.setOnClickListener {
+            addNotificationListener.onItemClick(def)
         }
     }
 }

@@ -2,14 +2,19 @@ package com.example.dictionaryapp.adapters.listAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import com.example.dictionaryapp.adapters.differCallback
 import com.example.dictionaryapp.databinding.ListWordCardBinding
 import com.example.dictionaryapp.model.Def
 
-class ListDefAdapter(private var listener: OnItemClickListener)
-    : androidx.recyclerview.widget.ListAdapter<Def, ListDefViewHolder>(differCallback) {
+class ListDefAdapter(
+    private var infoListener: OnItemClickListener,
+    private var deleteListener: OnItemClickListener,
+    private var addNotificationListener: OnItemClickListener
+):
+    ListAdapter<Def, ListDefViewHolder>(differCallback) {
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(def: Def)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListDefViewHolder {
@@ -19,7 +24,9 @@ class ListDefAdapter(private var listener: OnItemClickListener)
                 parent,
                 false
             ),
-            listener
+            infoListener,
+            deleteListener,
+            addNotificationListener
         )
     }
 

@@ -13,11 +13,8 @@ interface DictionaryDao {
     @Query("SELECT * FROM defs")
     fun getAllTranslations(): LiveData<List<Def>>
 
-//    @Query("SELECT COUNT(*) FROM defs")
-//    fun getTranslationsSize(): LiveData<List<Def>>
-
-//    @Query("SELECT * FROM defs WHERE text=:word")
-//    fun findTranslation(word: String): LiveData<List<Def>>
+    @Query("SELECT COUNT(*) FROM defs")
+    fun getTranslationsSize(): LiveData<Int>
 
     @Delete
     suspend fun deleteTranslation(def: Def)

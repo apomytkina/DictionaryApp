@@ -33,7 +33,7 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var searchDefAdapter: SearchDefAdapter
+    private lateinit var searchDefAdapter: SearchDefAdapter
     private val viewModel: DictionaryViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -59,7 +59,7 @@ class SearchFragment : Fragment() {
             object : SearchDefAdapter.OnItemClickListener {
                 override fun onItemClick(def: Def) {
                     viewModel.saveWord(def)
-                    Toast.makeText(context, "Clicked!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Word ${def.text} is added to learning list", Toast.LENGTH_SHORT).show()
                 }
             }
         )
@@ -98,7 +98,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    fun parseDefToArray(def: Def): Array<String>{
+    private fun parseDefToArray(def: Def): Array<String>{
         var translation = "Translation is not found"
         var example = "Example is not found"
         var word = def.text

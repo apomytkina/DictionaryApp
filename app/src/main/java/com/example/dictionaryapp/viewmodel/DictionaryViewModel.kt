@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dictionaryapp.model.Def
-import com.example.dictionaryapp.model.Translation
 import com.example.dictionaryapp.repository.DictionaryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -39,5 +38,5 @@ class DictionaryViewModel @Inject constructor(
         repository.deleteTranslation(def)
     }
 
-    //fun getSize() = repository.getTranslationsSize()
+    fun getSize() = repository.getTranslationsSize()
 }
