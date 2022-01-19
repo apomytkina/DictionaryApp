@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.QuizFragment">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/word1_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/word1_tv"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="@dimen/quiz_text_size"
+                android:text="@string/quiz_word1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:layout_marginEnd="@dimen/quiz_margin_end"
+                android:id="@+id/word1_et"
+                android:layout_weight="2"
+                android:textSize="@dimen/quiz_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/word2_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/word2_tv"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="@dimen/quiz_text_size"
+                android:text="@string/quiz_word2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:layout_marginEnd="@dimen/quiz_margin_end"
+                android:id="@+id/word2_et"
+                android:layout_weight="2"
+                android:textSize="@dimen/quiz_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/word3_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/word3_tv"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="@dimen/quiz_text_size"
+                android:text="@string/quiz_word3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:layout_marginEnd="@dimen/quiz_margin_end"
+                android:id="@+id/word3_et"
+                android:layout_weight="2"
+                android:textSize="@dimen/quiz_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/word4_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/word4_tv"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="@dimen/quiz_text_size"
+                android:text="@string/quiz_word4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:layout_marginEnd="@dimen/quiz_margin_end"
+                android:id="@+id/word4_et"
+                android:layout_weight="2"
+                android:textSize="@dimen/quiz_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/word5_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/word5_tv"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="@dimen/quiz_text_size"
+                android:text="@string/quiz_word5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:layout_marginEnd="@dimen/quiz_margin_end"
+                android:id="@+id/word5_et"
+                android:layout_weight="2"
+                android:textSize="@dimen/quiz_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/check_answers_button"
+            android:text="@string/quiz_button_tv"
+            android:layout_width="@dimen/quiz_button_width"
+            android:layout_height="@dimen/quiz_button_height"/>
+
+    </LinearLayout>
+
+</LinearLayout>

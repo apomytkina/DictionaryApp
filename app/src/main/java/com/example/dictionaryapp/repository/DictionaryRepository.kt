@@ -18,5 +18,7 @@ class DictionaryRepository @Inject constructor(
 
     fun getTranslationsSize() = dictionaryDao.getTranslationsSize()
 
+    fun getRandomTranslations() = dictionaryDao.getRandomTranslations()
+
     suspend fun deleteTranslation(def: Def) = dictionaryDao.deleteTranslation(def)
 }

@@ -34,6 +34,8 @@ class DictionaryViewModel @Inject constructor(
 
     fun getAllWords() = repository.getAllTranslations()
 
+    fun getRandomTranslations() = repository.getRandomTranslations()
+
     fun deleteWord(def: Def) = viewModelScope.launch {
         repository.deleteTranslation(def)
     }

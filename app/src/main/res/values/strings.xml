@@ -6,4 +6,10 @@
     <string name="word_translation">время</string>
     <string name="word_usage">You can visit me at any time.</string>
     <string name="count_of_learning_words">Count of learning words: 0</string>
+    <string name="quiz_word1">time</string>
+    <string name="quiz_word2">word</string>
+    <string name="quiz_word3">house</string>
+    <string name="quiz_word4">head</string>
+    <string name="quiz_word5">road</string>
+    <string name="quiz_button_tv">Check Quiz</string>
 </resources>

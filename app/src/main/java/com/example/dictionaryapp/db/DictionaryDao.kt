@@ -13,6 +13,9 @@ interface DictionaryDao {
     @Query("SELECT * FROM defs")
     fun getAllTranslations(): LiveData<List<Def>>
 
+    @Query("SELECT * FROM defs ORDER BY RANDOM() LIMIT 5")
+    fun getRandomTranslations(): LiveData<List<Def>>
+
     @Query("SELECT COUNT(*) FROM defs")
     fun getTranslationsSize(): LiveData<Int>
 

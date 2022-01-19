@@ -25,9 +25,9 @@
     </fragment>
     <fragment
         android:id="@+id/doneFragment"
-        android:name="com.example.dictionaryapp.ui.DoneFragment"
+        android:name="com.example.dictionaryapp.ui.QuizFragment"
         android:label="fragment_done"
-        tools:layout="@layout/fragment_done" >
+        tools:layout="@layout/fragment_quiz" >
         <action
             android:id="@+id/action_doneFragment_to_wordFragment"
             app:destination="@id/wordFragment" />
