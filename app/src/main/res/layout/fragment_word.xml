@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:gravity="center_vertical"
             android:id="@+id/word_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,14 +27,15 @@
             android:textStyle="bold" />
 
         <TextView
+            android:gravity="center_vertical"
             android:id="@+id/part_of_speech_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_title_start_margin"
             android:layout_marginStart="@dimen/word_part_of_speech_start_margin"
             android:text="@string/word_part_of_speech"
-            android:textSize="@dimen/word_title_text_size"
-            android:textStyle="bold" />
+            android:textSize="@dimen/part_of_speech_text_size"
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
 
@@ -43,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_title_start_margin"
         android:layout_marginTop="@dimen/card_title_start_margin"
+        android:textStyle="italic"
         android:text="@string/word_transcription"
         android:textSize="@dimen/word_text_size"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/card_title_start_margin"
         android:layout_marginTop="@dimen/card_title_start_margin"
+        android:textStyle="italic"
         android:text="@string/word_translation"
         android:textSize="@dimen/word_text_size"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +67,7 @@
         android:id="@+id/example_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="italic"
         android:layout_marginStart="@dimen/card_title_start_margin"
         android:layout_marginTop="@dimen/card_title_start_margin"
         android:text="@string/word_usage"

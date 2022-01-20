@@ -18,25 +18,26 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:gravity="center_horizontal"
             android:visibility="invisible"
+            android:gravity="center_horizontal"
             android:id="@+id/word1_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/word1_tv"
-                android:gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:textSize="@dimen/quiz_text_size"
                 android:text="@string/quiz_word1"
                 android:layout_width="@dimen/quiz_word_width"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
             <EditText
-                android:id="@+id/word1_et"
                 android:textSize="@dimen/quiz_text_size"
+                android:id="@+id/word1_et"
                 android:layout_width="@dimen/quiz_word_et_width"
-                android:layout_height="wrap_content"/>
+                android:layout_height="@dimen/quiz_et_height"/>
 
         </LinearLayout>
 
@@ -49,17 +50,18 @@
 
             <TextView
                 android:id="@+id/word2_tv"
-                android:gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:textSize="@dimen/quiz_text_size"
                 android:text="@string/quiz_word2"
                 android:layout_width="@dimen/quiz_word_width"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
             <EditText
-                android:id="@+id/word2_et"
                 android:textSize="@dimen/quiz_text_size"
+                android:id="@+id/word2_et"
                 android:layout_width="@dimen/quiz_word_et_width"
-                android:layout_height="wrap_content"/>
+                android:layout_height="@dimen/quiz_et_height"/>
 
         </LinearLayout>
 
@@ -72,17 +74,18 @@
 
             <TextView
                 android:id="@+id/word3_tv"
-                android:gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:textSize="@dimen/quiz_text_size"
                 android:text="@string/quiz_word3"
                 android:layout_width="@dimen/quiz_word_width"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/word3_et"
                 android:textSize="@dimen/quiz_text_size"
                 android:layout_width="@dimen/quiz_word_et_width"
-                android:layout_height="wrap_content"/>
+                android:layout_height="@dimen/quiz_et_height"/>
 
         </LinearLayout>
 
@@ -95,17 +98,18 @@
 
             <TextView
                 android:id="@+id/word4_tv"
-                android:gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:textSize="@dimen/quiz_text_size"
                 android:text="@string/quiz_word4"
                 android:layout_width="@dimen/quiz_word_width"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/word4_et"
                 android:textSize="@dimen/quiz_text_size"
                 android:layout_width="@dimen/quiz_word_et_width"
-                android:layout_height="wrap_content"/>
+                android:layout_height="@dimen/quiz_et_height"/>
 
         </LinearLayout>
 
@@ -118,17 +122,19 @@
 
             <TextView
                 android:id="@+id/word5_tv"
-                android:gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:textSize="@dimen/quiz_text_size"
                 android:text="@string/quiz_word5"
                 android:layout_width="@dimen/quiz_word_width"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/word5_et"
                 android:textSize="@dimen/quiz_text_size"
+                android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/quiz_word_et_width"
-                android:layout_height="wrap_content"/>
+                android:layout_height="@dimen/quiz_et_height"/>
 
         </LinearLayout>
 

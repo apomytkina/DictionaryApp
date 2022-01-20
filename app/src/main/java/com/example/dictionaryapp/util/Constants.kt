@@ -7,6 +7,7 @@ class Constants {
        const val DICTIONARY_DATABASE_NAME = "dictionary_db"
        const val SEARCH_WORD_TIME_DELAY = 500L
        const val INFO_BUNDLE_ID = "translation"
-       //const val NUMBER_OF_RANDOM_TRANSLATIONS = 5
+       const val GREEN_COLOR_HASH = "#17894F"
+       const val RED_COLOR_HASH = "#AF2414"
    }
 }

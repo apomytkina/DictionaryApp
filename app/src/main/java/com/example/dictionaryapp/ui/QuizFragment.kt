@@ -1,19 +1,31 @@
 package com.example.dictionaryapp.ui
 
 import android.graphics.Color
+import android.graphics.Typeface
+import android.opengl.Visibility
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
+import android.util.Size
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.scale
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.dictionaryapp.R
 import com.example.dictionaryapp.databinding.FragmentQuizBinding
+import com.example.dictionaryapp.util.Constants.Companion.GREEN_COLOR_HASH
+import com.example.dictionaryapp.util.Constants.Companion.RED_COLOR_HASH
 import com.example.dictionaryapp.viewmodel.DictionaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,15 +49,15 @@ class QuizFragment : Fragment() {
         viewModel.getRandomTranslations().observe(viewLifecycleOwner, { translations ->
             binding.apply {
                 if (translations.isNotEmpty())
-                    setQuiz(word1Layout, word1Tv, translations[0].text)
+                    setQuiz(word1Layout, word1Tv, translations[0].text, translations[0].pos)
                 if (translations.size > 1)
-                    setQuiz(word2Layout, word2Tv, translations[1].text)
+                    setQuiz(word2Layout, word2Tv, translations[1].text, translations[1].pos)
                 if (translations.size > 2)
-                    setQuiz(word3Layout, word3Tv, translations[2].text)
+                    setQuiz(word3Layout, word3Tv, translations[2].text, translations[2].pos)
                 if (translations.size > 3)
-                    setQuiz(word4Layout, word4Tv, translations[3].text)
+                    setQuiz(word4Layout, word4Tv, translations[3].text, translations[3].pos)
                 if (translations.size > 4)
-                    setQuiz(word5Layout, word5Tv, translations[4].text)
+                    setQuiz(word5Layout, word5Tv, translations[4].text, translations[4].pos)
             }
             answers = translations.map {
                 it.tr[0].text
@@ -82,20 +94,39 @@ class QuizFragment : Fragment() {
         return view
     }
 
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
+    }
+
     private fun checkAnswer(tv: TextView, et: EditText, answer: String){
         if (et.text.toString().trim().lowercase() == answer){
             countOfRightAnswers++
-            //tv.setTextColor(Color.GREEN)
-            et.setTextColor(Color.GREEN)
+            et.setTextColor(Color.parseColor(GREEN_COLOR_HASH))
         } else {
             et.setText(answer)
-            //tv.setTextColor(Color.RED)
-            et.setTextColor(Color.RED)
+            et.setTextColor(Color.parseColor(RED_COLOR_HASH))
         }
     }
 
-    private fun setQuiz(ll: LinearLayout, tv: TextView, word: String){
+    private fun setQuiz(ll: LinearLayout, tv: TextView, word: String, pos: String){
         ll.isVisible = true
-        tv.text = word
+        val posSpannable = SpannableString("$word\n($pos)")
+
+        posSpannable.setSpan(
+                RelativeSizeSpan(0.7f),
+                word.length+1,
+                word.length+pos.length+3,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        posSpannable.setSpan(
+            StyleSpan(Typeface.ITALIC),
+            word.length+1,
+            word.length+pos.length+3,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        tv.text = posSpannable
     }
 }

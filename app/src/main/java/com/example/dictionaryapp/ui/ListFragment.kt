@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dictionaryapp.R
 import com.example.dictionaryapp.adapters.listAdapter.ListDefAdapter
@@ -87,13 +85,19 @@ class ListFragment : Fragment() {
     }
 
     private fun parseDefToArray(def: Def): Array<String>{
-        var translation = "Translation is not found"
-        var example = "Example is not found"
+        var translation = "No Translation"
+        var example = "No Example"
+        var partOfSpeech = ""
+        var transcription = "No Transcription"
         var word = def.text
+        if (!def.pos.isNullOrEmpty())
+            partOfSpeech = def.pos
+        if (!def.ts.isNullOrEmpty())
+            transcription = def.ts
         if (!def.tr.isNullOrEmpty())
             translation = def.tr[0].text
         if (!def.tr[0].ex.isNullOrEmpty())
             example = def.tr[0].ex[0].text
-        return arrayOf(word, translation, example)
+        return arrayOf(word, partOfSpeech, transcription, translation, example)
     }
 }

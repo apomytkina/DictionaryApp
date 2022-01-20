@@ -24,17 +24,18 @@ class WordFragment : Fragment() {
             val translation = it.getStringArray(INFO_BUNDLE_ID)
             if (translation != null){
                 binding.wordTitleTv.text = translation[0]
-                if (translation[0] == "Word is not found")
+                binding.partOfSpeechTv.text = "(${translation[1]})"
+                binding.transcriptionTv.text = "[${translation[2]}]"
+                binding.translationTv.text = translation[3]
+                binding.exampleTv.text = translation[4]
+                if (translation[2] != "No Transcription")
+                    binding.transcriptionTv.typeface = Typeface.DEFAULT
+                if (translation[3] != "No Translation")
                     binding.translationTv.typeface = Typeface.DEFAULT
-                binding.translationTv.text = translation[1]
-                if (translation[1] == "Translation is not found")
-                    binding.translationTv.typeface = Typeface.DEFAULT
-                binding.exampleTv.text = translation[2]
-                if (translation[2] == "Example is not found")
+                if (translation[4] != "No Example")
                     binding.exampleTv.typeface = Typeface.DEFAULT
             }
         }
-
         return view
     }
 

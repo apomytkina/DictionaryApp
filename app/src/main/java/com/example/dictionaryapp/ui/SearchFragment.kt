@@ -1,13 +1,11 @@
 package com.example.dictionaryapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.graphics.translationMatrix
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -16,12 +14,9 @@ import com.example.dictionaryapp.R
 import com.example.dictionaryapp.adapters.searchAdapter.SearchDefAdapter
 import com.example.dictionaryapp.databinding.FragmentSearchBinding
 import com.example.dictionaryapp.model.Def
-import com.example.dictionaryapp.model.Ex
-import com.example.dictionaryapp.model.Tr
 import com.example.dictionaryapp.util.Constants.Companion.INFO_BUNDLE_ID
 import com.example.dictionaryapp.util.Constants.Companion.SEARCH_WORD_TIME_DELAY
 import com.example.dictionaryapp.viewmodel.DictionaryViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -99,13 +94,19 @@ class SearchFragment : Fragment() {
     }
 
     private fun parseDefToArray(def: Def): Array<String>{
-        var translation = "Translation is not found"
-        var example = "Example is not found"
+        var translation = "No Translation"
+        var example = "No Example"
+        var partOfSpeech = ""
+        var transcription = "No Transcription"
         var word = def.text
+        if (!def.pos.isNullOrEmpty())
+            partOfSpeech = def.pos
+        if (!def.ts.isNullOrEmpty())
+            transcription = def.ts
         if (!def.tr.isNullOrEmpty())
             translation = def.tr[0].text
         if (!def.tr[0].ex.isNullOrEmpty())
             example = def.tr[0].ex[0].text
-        return arrayOf(word, translation, example)
+        return arrayOf(word, partOfSpeech, transcription, translation, example)
     }
 }
