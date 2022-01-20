@@ -4,6 +4,8 @@
     <string name="card_title">time - время</string>
     <string name="word_title">time</string>
     <string name="word_translation">время</string>
+    <string name="word_transcription">[taɪm]</string>
+    <string name="word_part_of_speech">(noun)</string>
     <string name="word_usage">You can visit me at any time.</string>
     <string name="count_of_learning_words">Count of learning words: 0</string>
     <string name="quiz_word1">time</string>

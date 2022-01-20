@@ -9,10 +9,13 @@
     <dimen name="card_title_start_margin">20dp</dimen>
     <dimen name="word_title_text_size">36sp</dimen>
     <dimen name="word_text_size">24sp</dimen>
+    <dimen name="word_part_of_speech_start_margin">5dp</dimen>
     <dimen name="icon_height_width">50dp</dimen>
     <dimen name="start_margin_rv">5dp</dimen>
     <dimen name="quiz_text_size">24sp</dimen>
     <dimen name="quiz_button_width">200dp</dimen>
     <dimen name="quiz_button_height">60dp</dimen>
     <dimen name="quiz_margin_end">40dp</dimen>
+    <dimen name="quiz_word_width">150dp</dimen>
+    <dimen name="quiz_word_et_width">200dp</dimen>
 </resources>
