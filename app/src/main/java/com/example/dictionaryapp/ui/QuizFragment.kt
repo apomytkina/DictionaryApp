@@ -2,27 +2,21 @@ package com.example.dictionaryapp.ui
 
 import android.graphics.Color
 import android.graphics.Typeface
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
-import android.util.Size
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.text.scale
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import com.example.dictionaryapp.R
 import com.example.dictionaryapp.databinding.FragmentQuizBinding
 import com.example.dictionaryapp.util.Constants.Companion.GREEN_COLOR_HASH
 import com.example.dictionaryapp.util.Constants.Companion.RED_COLOR_HASH
@@ -46,30 +40,12 @@ class QuizFragment : Fragment() {
         _binding = FragmentQuizBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        viewModel.getRandomTranslations().observe(viewLifecycleOwner, { translations ->
-            binding.apply {
-                if (translations.isNotEmpty())
-                    setQuiz(word1Layout, word1Tv, translations[0].text, translations[0].pos)
-                if (translations.size > 1)
-                    setQuiz(word2Layout, word2Tv, translations[1].text, translations[1].pos)
-                if (translations.size > 2)
-                    setQuiz(word3Layout, word3Tv, translations[2].text, translations[2].pos)
-                if (translations.size > 3)
-                    setQuiz(word4Layout, word4Tv, translations[3].text, translations[3].pos)
-                if (translations.size > 4)
-                    setQuiz(word5Layout, word5Tv, translations[4].text, translations[4].pos)
-            }
-            answers = translations.map {
-                it.tr[0].text
-            }
-        })
+        getRandomWords()
 
         binding.checkAnswersButton.setOnClickListener {
             if (binding.checkAnswersButton.text == "Refresh Quiz"){
-                parentFragmentManager.beginTransaction().apply {
-                    replace(R.id.quizFragment, QuizFragment())
-                    commit()
-                }
+                getRandomWords()
+                binding.checkAnswersButton.text = "Check Quiz"
             }
             else {
                 if (answers.isNotEmpty())
@@ -109,7 +85,7 @@ class QuizFragment : Fragment() {
         }
     }
 
-    private fun setQuiz(ll: LinearLayout, tv: TextView, word: String, pos: String){
+    private fun setQuiz(ll: LinearLayout, tv: TextView, et: EditText, word: String, pos: String){
         ll.isVisible = true
         val posSpannable = SpannableString("$word\n($pos)")
 
@@ -128,5 +104,27 @@ class QuizFragment : Fragment() {
         )
 
         tv.text = posSpannable
+        et.setText("")
+        et.setTextColor(Color.BLACK)
+    }
+
+    private fun getRandomWords(){
+        viewModel.getRandomTranslations().observe(viewLifecycleOwner, { translations ->
+            binding.apply {
+                if (translations.isNotEmpty())
+                    setQuiz(word1Layout, word1Tv, word1Et, translations[0].text, translations[0].pos)
+                if (translations.size > 1)
+                    setQuiz(word2Layout, word2Tv, word2Et, translations[1].text, translations[1].pos)
+                if (translations.size > 2)
+                    setQuiz(word3Layout, word3Tv, word3Et, translations[2].text, translations[2].pos)
+                if (translations.size > 3)
+                    setQuiz(word4Layout, word4Tv, word4Et, translations[3].text, translations[3].pos)
+                if (translations.size > 4)
+                    setQuiz(word5Layout, word5Tv, word5Et, translations[4].text, translations[4].pos)
+            }
+            answers = translations.map {
+                it.tr[0].text
+            }
+        })
     }
 }
