@@ -41,4 +41,6 @@ class DictionaryViewModel @Inject constructor(
     }
 
     fun getSize() = repository.getTranslationsSize()
+
+    fun getRandomWordForNotification() = repository.getRandomRandomWordForNotification()
 }

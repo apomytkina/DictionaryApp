@@ -19,6 +19,9 @@ interface DictionaryDao {
     @Query("SELECT COUNT(*) FROM defs")
     fun getTranslationsSize(): LiveData<Int>
 
+    @Query("SELECT * FROM defs ORDER BY RANDOM() LIMIT 1")
+    fun getRandomWordForNotification() : LiveData<Def>
+
     @Delete
     suspend fun deleteTranslation(def: Def)
 }

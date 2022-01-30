@@ -10,7 +10,7 @@ import com.example.dictionaryapp.model.Def
 class ListDefAdapter(
     private var infoListener: OnItemClickListener,
     private var deleteListener: OnItemClickListener,
-    private var addNotificationListener: OnItemClickListener
+    //private var addNotificationListener: OnItemClickListener
 ):
     ListAdapter<Def, ListDefViewHolder>(differCallback) {
     interface OnItemClickListener {
@@ -25,8 +25,8 @@ class ListDefAdapter(
                 false
             ),
             infoListener,
-            deleteListener,
-            addNotificationListener
+            deleteListener
+            //addNotificationListener
         )
     }
 

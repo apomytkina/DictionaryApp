@@ -7,8 +7,8 @@ import com.example.dictionaryapp.model.Def
 class ListDefViewHolder(
     private val binding: ListWordCardBinding,
     infoListener: ListDefAdapter.OnItemClickListener,
-    deleteListener: ListDefAdapter.OnItemClickListener,
-    addNotificationListener: ListDefAdapter.OnItemClickListener
+    deleteListener: ListDefAdapter.OnItemClickListener
+    //addNotificationListener: ListDefAdapter.OnItemClickListener
 ): RecyclerView.ViewHolder(binding.root) {
     private lateinit var def: Def
 
@@ -28,8 +28,8 @@ class ListDefViewHolder(
             deleteListener.onItemClick(def)
         }
 
-        binding.addNotificationListCard.setOnClickListener {
-            addNotificationListener.onItemClick(def)
-        }
+//        binding.addNotificationListCard.setOnClickListener {
+//            addNotificationListener.onItemClick(def)
+//        }
     }
 }

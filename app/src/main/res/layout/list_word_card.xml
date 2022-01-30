@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
     <ImageButton
         android:id="@+id/add_notification_list_card"
         android:layout_width="@dimen/icon_height_width"
@@ -22,7 +23,7 @@
         android:src="@drawable/ic_add_notification"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" /> -->
 
     <ImageButton
         android:id="@+id/delete_list_card"
@@ -30,7 +31,7 @@
         android:layout_height="@dimen/icon_height_width"
         android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/add_notification_list_card"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton

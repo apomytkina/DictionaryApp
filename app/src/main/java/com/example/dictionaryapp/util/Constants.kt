@@ -9,5 +9,6 @@ class Constants {
        const val INFO_BUNDLE_ID = "translation"
        const val GREEN_COLOR_HASH = "#17894F"
        const val RED_COLOR_HASH = "#AF2414"
+       const val HOUR_FOR_NOTIFICATION = 14
    }
 }
