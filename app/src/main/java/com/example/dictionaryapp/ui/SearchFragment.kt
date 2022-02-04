@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dictionaryapp.R
@@ -29,7 +30,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var searchDefAdapter: SearchDefAdapter
-    private val viewModel: DictionaryViewModel by activityViewModels()
+    private val viewModel: DictionaryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

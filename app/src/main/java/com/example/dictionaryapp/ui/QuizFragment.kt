@@ -17,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.dictionaryapp.databinding.FragmentQuizBinding
 import com.example.dictionaryapp.util.Constants.Companion.GREEN_COLOR_HASH
 import com.example.dictionaryapp.util.Constants.Companion.RED_COLOR_HASH
@@ -31,7 +32,7 @@ class QuizFragment : Fragment() {
     private var countOfRightAnswers = 0
     private lateinit var answers: List<String>
 
-    private val viewModel: DictionaryViewModel by activityViewModels()
+    private val viewModel: DictionaryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

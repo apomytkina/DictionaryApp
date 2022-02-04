@@ -4,32 +4,25 @@ import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Context.ALARM_SERVICE
-import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.OnReceiveContentListener
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dictionaryapp.R
 import com.example.dictionaryapp.adapters.listAdapter.ListDefAdapter
 import com.example.dictionaryapp.databinding.FragmentListBinding
 import com.example.dictionaryapp.model.Def
-import com.example.dictionaryapp.util.AlarmReceiver
+import com.example.dictionaryapp.broadcastreceivers.AlarmReceiver
 import com.example.dictionaryapp.util.Constants.Companion.HOUR_FOR_NOTIFICATION
 import com.example.dictionaryapp.util.Constants.Companion.INFO_BUNDLE_ID
 import com.example.dictionaryapp.viewmodel.DictionaryViewModel
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -43,7 +36,7 @@ class ListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var listDefAdapter: ListDefAdapter
-    private val viewModel: DictionaryViewModel by activityViewModels()
+    private val viewModel: DictionaryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
